@@ -32,54 +32,30 @@
     <body>
 
         <div class="container">
-            <h1 class="h3 mb-4 text-gray-800">Form Tambah Unit Bank Sampah</h1>
-            <form action="{{ route('admin.banksampah.tambah') }}" method="post" enctype="multipart/form-data">
-
-                @csrf
-                <div class="from-group">
-                    <label for="nama">Nama Bank Sampah</label>
-                    <input class="form-control" type="text" name="nama">
-                </div>
-
-                <div class="form-group">
-                    <label for="alamat">Alamat Bank Sampah</label>
-                    <input class="form-control" name="alamat" id="" cols="30" rows="10">
-                </div>
-
-                <div class="form-group">
-                    <label for="foto">Foto Bank Sampah</label>
-                    <input type="file" name="foto" class="form-control">
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="form-group">
-                            <label for="latitude">Latitude</label>
-                            <input class="form-control" name="latitude" id="latitude" {{-- disabled value="" --}} cols="30"
-                                rows="10">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="longitude">Longitude</label>
-                            <input class="form-control" name="longitude" id="longitude" {{-- disabled value="" --}} cols="30"
-                                rows="10">
-                        </div>
-
-                        {{-- <div class="form-group">
-                            <label for="longitude">Lokasi</label>
-                            <input class="form-control" name="lokasi" id="lokasi" disabled value="" cols="30"
-                                rows="10">
-                        </div> --}}
-
-                        <input class="btn btn-primary"type="submit" value="Simpan">
-                        <a href="{{ route('admin.banksampah') }}" class="btn btn-primary">Batal</a>
-                    </div>
-
-                    <div class="col">
-                        <div id="peta">
-                        </div>
+            <h1>Pemetaan Lokasi Banksampah di Kota Pontianak</h1>
+            <div class="row">
+                <div class="col">
+                    <div id="peta">
                     </div>
                 </div>
+
+                <div class="col-sm-5">
+                    @csrf
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <input class="form-control" name="latitude" id="latitude" cols="30" rows="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <input class="form-control" name="longitude" id="longitude" cols="30" rows="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Lokasi</label>
+                        <input class="form-control" name="lokasi" id="lokasi" cols="30" rows="10">
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         {{-- peta --}}
@@ -112,7 +88,7 @@
                 let longitude = e.latlng.lng.toString().substring(0, 15);
                 document.getElementById("latitude").value = latitude;
                 document.getElementById("longitude").value = longitude;
-                // document.getElementById("lokasi").value = latitude + "," + longitude;
+                document.getElementById("lokasi").value = latitude + "," + longitude;
 
                 let popup = L.popup()
                     .setLatLng([latitude, longitude])
@@ -132,6 +108,5 @@
             });
             leafletMap.addControl(search);
         </script>
-
     </body>
 @endsection

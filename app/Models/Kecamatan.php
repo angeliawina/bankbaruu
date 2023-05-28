@@ -5,21 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sampah extends Model
+class Kecamatan extends Model
 {
     use HasFactory;
 
-    
-
     protected $fillable=[
-        'banksampahs_id',
         'nama',
-        'harga',
-        'foto',
+        'geojson'
     ];
-
-    public function bank()
-    {
-        return $this->belongsTo(Banksampah::class);
-    }
 }

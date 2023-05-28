@@ -19,9 +19,8 @@ class Banksampah extends Model
         'longitude'
     ];
 
-//     public function sampahs()
-//     {
-//         return $this->hasMany(Sampah::class, 'banksampahs_id', 'id');
-//     }
-// }
+    public function sampahs()
+    {
+        return $this->hasMany(Sampah::class, 'banksampahs_id', 'id');
+    }
 }

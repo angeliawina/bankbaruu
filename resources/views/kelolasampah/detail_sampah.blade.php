@@ -20,7 +20,7 @@
                         Harga: {{ $sampah->harga }}<br />
                         <img src="{{ asset('storage/' . $sampah->foto) }}" height="300px" width="300px">
                     </div>
-                    <a href="{{ route('admin.kelolasampah.datasampah', ['banksampah_id' => $banksampah->id, 'sampah_id' => $sampah->id]) }}"
+                    <a href="{{ route('admin.kelolasampah.datasampah', ['id' => $bank->id]) }}"
                         class="btn btn-primary">Kembali</a>
                 </div>
             </div>

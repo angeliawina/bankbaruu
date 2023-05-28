@@ -27,7 +27,8 @@
                                         <tr>
                                             <td>{{ $banks->id }}</td>
                                             <td>{{ $banks->nama }}</td>
-                                            <td><a href="{{ route('admin.kelolasampah.datasampah' . $banks->id) }}">Lihat
+                                            <td><a
+                                                    href="{{ route('admin.kelolasampah.datasampah', ['id' => $banks->id]) }}">Lihat
                                                     Data</a>
                                                 {{-- ['id' => $banks->id] --}}
                                             </td>

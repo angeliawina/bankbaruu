@@ -11,16 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sampahs', function (Blueprint $table) {
+        Schema::create('kecamatans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('banksampahs_id');
-            $table->foreign('banksampahs_id')->references('id')->on('banksampahs')->onDelete('cascade');
             $table->string('nama');
-            $table->string('harga');
-            $table->string('foto');
-
-           
-
+            $table->string('geojson');
             $table->timestamps();
         });
     }
@@ -30,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sampah');
+        Schema::dropIfExists('kecamatans');
     }
 };

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BanksampahController;
+use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\PetaController;
 use App\Http\Controllers\SampahController;
 
 /*
@@ -34,8 +36,19 @@ use App\Http\Controllers\SampahController;
     Route::get('/kelolasampah/formtambah/{id}', [SampahController::class, 'formTambahSampah'])->name('admin.kelolasampah.formtambah');
     Route::post('/kelolasampah/tambah', [SampahController::class, 'tambahSampah'])->name('admin.kelolasampah.tambah');
     // Route::get('/kelolasampah/detail/{id}', [SampahController::class, 'detailSampah'])->name('admin.kelolasampah.detail');
-    
-    Route::get('/kelolasampah/detail/{banksampah_id}/sampah{sampah_id}', [SampahController::class, 'detailSampah'])->name('admin.kelolasampah.detail');
+    Route::get('/kelolasampah/formubah/{banksampah_id}/sampah/{id}', [SampahController::class, 'formUbahSampah'])->name('admin.kelolasampah.formubah');
+    Route::get('/kelolasampah/detail/{banksampah_id}/sampah/{id}', [SampahController::class, 'detailSampah'])->name('admin.kelolasampah.detail');
+    Route::post('/kelolasampah/ubah/{banksampah_id}/sampah/{id}', [SampahController::class, 'ubahSampah'])->name('admin.kelolasampah.ubah');
     // Route::get(user/{id}/{nama})
-    
+
+
+    //DATA KECAMATAN
+    Route::get('/kelolakecamatan/index', [KecamatanController::class, 'index'])->name('admin.datakecamatan');
+    Route::get('/kelolakecamatan/formtambah', [KecamatanController::class, 'formTambahKecamatan'])->name('admin.kelolakecamatan.formtambah');
+
+
+    //PETA
+    Route::get('/pemetaan/map', [PetaController::class, 'map'])->name('admin.map');
+
+
 // });

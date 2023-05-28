@@ -3,13 +3,19 @@
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="assets/images/faces/face1.jpg" alt="profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                    {{-- <img src="assets/images/faces/face1.jpg" alt="profile"> --}}
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                    <span class="font-weight-bold mb-2">David Grey. H</span>
-                    <span class="text-secondary text-small">Project Manager</span>
+                    <span class="font-weight-bold mb-2">Admin Name</span>
+                    {{-- <span class="text-secondary text-small"></span> --}}
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
             </a>
@@ -20,18 +26,33 @@
                 <span class="menu-title">Kelola Data Bank Sampah</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            {{-- <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
                     <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
         </li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="{{ route('admin.datasampah') }}" aria-expanded="false"
                 aria-controls="ui-basic"> <span class="menu-title">Kelola Data Sampah</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="bi bi-card-list"></i>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="{{ route('admin.datakecamatan') }}"
+                aria-expanded="false" aria-controls="ui-basic"> <span class="menu-title">Kelola Data Kecamatan</span>
+                <i class="bi bi-geo-fill"></i>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="{{ route('admin.map') }}" aria-expanded="false"
+                aria-controls="ui-basic">
+                <span class="menu-title">Pemetaan</span>
+                <i class="bi bi-geo-alt-fill"></i>
             </a>
         </li>
         {{-- <li class="nav-item">

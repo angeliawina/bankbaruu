@@ -76,7 +76,7 @@ class BanksampahController extends Controller
             $bank = Banksampah::find($id);
         if(!$bank){
             return response()->json([
-                'message' => 'Barang tidak ditemukan'
+                'message' => 'Data tidak ditemukan'
             ],404);
         }
 
