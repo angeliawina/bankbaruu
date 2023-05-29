@@ -38,6 +38,9 @@
         {{-- @include('layouts/backend2/footer') --}}
     </div>
 
+
+    <!-- CSS Icon-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>

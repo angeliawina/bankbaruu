@@ -38,7 +38,7 @@
                 @csrf
                 <div class="from-group">
                     <label for="nama">Nama Bank Sampah</label>
-                    <input class="form-control" type="text" name="nama">
+                    <input class="form-control" type="text" name="nama" id="" cols="30" rows="10">
                 </div>
 
                 <div class="form-group">
@@ -53,33 +53,46 @@
 
                 <div class="row">
                     <div class="col-sm-5">
+                        <label for="latitude">Latitude</label>
+                        <input class="form-control" type="text" name="latitude" id="latitude" cols="30"
+                            rows="10"{{-- disabled value="" --}}>
+                    </div>
+                    <div class="col-sm-5">
+                        <label for="longitude">Longitude</label>
+                        <input class="form-control" type="text" name="longitude" id="longitude" cols="30"
+                            rows="10"{{-- disabled value="" --}}>
+                    </div>
+                </div>
+
+                {{-- <div class="row">
+                    <div class="col-sm-5">
                         <div class="form-group">
                             <label for="latitude">Latitude</label>
-                            <input class="form-control" name="latitude" id="latitude" {{-- disabled value="" --}} cols="30"
-                                rows="10">
+                            <input class="form-control" name="latitude" id="latitude" cols="30" rows="10">
                         </div>
 
                         <div class="form-group">
                             <label for="longitude">Longitude</label>
-                            <input class="form-control" name="longitude" id="longitude" {{-- disabled value="" --}} cols="30"
-                                rows="10">
-                        </div>
-
-                        {{-- <div class="form-group">
-                            <label for="longitude">Lokasi</label>
-                            <input class="form-control" name="lokasi" id="lokasi" disabled value="" cols="30"
-                                rows="10">
+                            <input class="form-control" name="longitude" id="longitude" cols="30" rows="10">
                         </div> --}}
 
-                        <input class="btn btn-primary"type="submit" value="Simpan">
-                        <a href="{{ route('admin.banksampah') }}" class="btn btn-primary">Batal</a>
-                    </div>
-
-                    <div class="col">
-                        <div id="peta">
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="longitude">Lokasi</label>
+                    <input class="form-control" name="lokasi" id="lokasi" disabled value="" cols="30"
+                        rows="10">
                 </div>
+
+                <input class="btn btn-primary"type="submit" value="Simpan">
+                <a href="{{ route('admin.banksampah') }}" class="btn btn-primary">Batal</a>
+        </div>
+
+        <div class="container" id="peta"></div>
+
+        {{-- <div class="col">
+            <div id="peta">
+            </div> --}}
+        </div>
+        </div>
         </div>
 
         {{-- peta --}}
@@ -112,7 +125,7 @@
                 let longitude = e.latlng.lng.toString().substring(0, 15);
                 document.getElementById("latitude").value = latitude;
                 document.getElementById("longitude").value = longitude;
-                // document.getElementById("lokasi").value = latitude + "," + longitude;
+                document.getElementById("lokasi").value = latitude + "," + longitude;
 
                 let popup = L.popup()
                     .setLatLng([latitude, longitude])

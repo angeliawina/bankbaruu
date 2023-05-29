@@ -1,4 +1,5 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    {{-- style="background-color: #41d1b9;" --}}
     <ul class="nav">
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
@@ -23,38 +24,37 @@
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="{{ route('admin.banksampah') }}" aria-expanded="false"
                 aria-controls="ui-basic">
+                <i class="material-icons">home</i>
                 <span class="menu-title">Kelola Data Bank Sampah</span>
-                <i class="mdi mdi-home menu-icon"></i>
             </a>
-            {{-- <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
-                    </li>
-                </ul>
-            </div> --}}
         </li>
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="{{ route('admin.datasampah') }}" aria-expanded="false"
-                aria-controls="ui-basic"> <span class="menu-title">Kelola Data Sampah</span>
-                <i class="bi bi-card-list"></i>
+                aria-controls="ui-basic">
+
+                <i class="material-icons">delete</i>
+
+                <span class="menu-title">Kelola Data Sampah</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="{{ route('admin.datakecamatan') }}"
-                aria-expanded="false" aria-controls="ui-basic"> <span class="menu-title">Kelola Data Kecamatan</span>
-                <i class="bi bi-geo-fill"></i>
+                aria-expanded="false" aria-controls="ui-basic">
+                <i class="material-icons">location_on</i>
+                <span class="menu-title">Kelola Data Kecamatan</span>
             </a>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="{{ route('admin.map') }}" aria-expanded="false"
                 aria-controls="ui-basic">
-                <span class="menu-title">Pemetaan</span>
                 <i class="bi bi-geo-alt-fill"></i>
+                <span class="menu-title">Pemetaan</span>
+
             </a>
-        </li>
+        </li> --}}
         {{-- <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
                 <span class="menu-title">Forms</span>

@@ -56,26 +56,31 @@
 
                 <div class="row">
                     <div class="col-sm-5">
-                        <div class="from-group">
-                            <label for="latitude">Latitude</label>
-                            <input class="form-control" type="text" name="latitude" value="{{ $bank->latitude }}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="longitude">Longitude</label>
-                            <input class="form-control" type="text" name="longitude" value="{{ $bank->longitude }}"> >
-                        </div>
-
-                        <input class="btn btn-primary"type="submit" value="Ubah">
-                        <a href="{{ route('admin.banksampah') }}" class="btn btn-primary">Batal</a>
+                        <label for="latitude">Latitude</label>
+                        <input class="form-control" type="text" name="latitude" id="latitude"
+                            value="{{ $bank->latitude }}">
                     </div>
-
-                    <div class="col">
-                        <div id="peta">
-                        </div>
+                    <div class="col-sm-5">
+                        <label for="longitude">Longitude</label>
+                        <input class="form-control" type="text" name="longitude" id="longitude"
+                            value="{{ $bank->longitude }}">
                     </div>
                 </div>
+
+                <input class="btn btn-primary"type="submit" value="Ubah">
+                <a href="{{ route('admin.banksampah') }}" class="btn btn-primary">Batal</a>
         </div>
+
+        {{-- <div class="col">
+                        <div id="peta">
+                        </div>
+                    </div> --}}
+        <div class="container" id="peta"></div>
+        {{-- <div class="form-group float-right mt-4"></div> --}}
+        </div>
+        </div>
+
+
 
         </form>
 
@@ -87,6 +92,10 @@
         <script>
             // you want to get it of the window global
             const providerOSM = new GeoSearch.OpenStreetMapProvider();
+            var mapCenter = [
+                {{ $bank->latitude }},
+                {{ $bank->longitude }},
+            ];
 
             //leaflet map
             var leafletMap = L.map('peta', {
@@ -97,7 +106,7 @@
                     pseudoFullscreen: false // if true, fullscreen to page width and height
                 },
                 minZoom: 2
-            }).setView([-0.0300733, 109.3257109], 12);
+            }).setView(mapCenter, 12);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
@@ -105,37 +114,26 @@
             }).addTo(leafletMap);
 
 
-            $(document).ready(function() {
-                $.getJSON('', function(data) {
+            var theMarker = L.marker(mapCenter).addTo(leafletMap);
 
-                    $.each(data, function(formUbahBS) {
-                        L.marker([data[formUbahBS].latitude, data[formUbahBS].longitude]).addTo(
-                            leafletMap);
-                    })
-                })
-            })
-
+            leafletMap.on('click', function(e) {
+                let latitude = e.latlng.lat.toString().substring(0, 15);
+                let longitude = e.latlng.lng.toString().substring(0, 15);
+                document.getElementById("latitude").value = latitude;
+                document.getElementById("longitude").value = longitude;
+                // document.getElementById("lokasi").value = latitude + "," + longitude;
 
 
-            // let theMarker = {};
+                let popup = L.popup()
+                    .setLatLng([latitude, longitude])
+                // .setContent("Kordinat : " + latitude + " - " + longitude)
+                // .openOn(leafletMap);
 
-            // leafletMap.on('click', function(e) {
-            //     let latitude = e.latlng.lat.toString().substring(0, 15);
-            //     let longitude = e.latlng.lng.toString().substring(0, 15);
-            //     document.getElementById("latitude").value = latitude;
-            //     document.getElementById("longitude").value = longitude;
-            //     document.getElementById("lokasi").value = latitude + "," + longitude;
-
-            //     let popup = L.popup()
-            //         .setLatLng([latitude, longitude])
-            //     // .setContent("Kordinat : " + latitude + " - " + longitude)
-            //     // .openOn(leafletMap);
-
-            //     if (theMarker != undefined) {
-            //         leafletMap.removeLayer(theMarker);
-            //     };
-            //     theMarker = L.marker([latitude, longitude]).addTo(leafletMap);
-            // });
+                if (theMarker != undefined) {
+                    leafletMap.removeLayer(theMarker);
+                };
+                theMarker = L.marker([latitude, longitude]).addTo(leafletMap);
+            });
 
             const search = new GeoSearch.GeoSearchControl({
                 provider: providerOSM,

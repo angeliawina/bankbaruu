@@ -22,12 +22,17 @@ use App\Http\Controllers\SampahController;
 
 
     //DATA BANK SAMPAH
-    Route::get('/', [BanksampahController::class, 'indexBs'])->name('admin.banksampah');
+    Route::get('/', [BanksampahController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/kelolabs/index', [BanksampahController::class, 'indexBs'])->name('admin.banksampah');
     Route::get('/kelolabs/formtambah', [BanksampahController::class, 'formTambahBS'])->name('admin.banksampah.formtambah');
     Route::get('/kelolabs/formubah/{id}', [BanksampahController::class, 'formUbahBS'])->name('admin.banksampah.formubah');
     Route::post('/kelolabs/tambah', [BanksampahController::class, 'tambahBS'])->name('admin.banksampah.tambah');
     Route::post('/kelolabs/ubah/{id}', [BanksampahController::class, 'ubahBS'])->name('admin.banksampah.ubah');
     Route::get('/kelolabs/detail/{id}', [BanksampahController::class, 'detailBS'])->name('admin.banksampah.detail');
+
+    Route::get('/kelolabs/titik', [BanksampahController::class, 'titik'])->name('admin.banksampah.titik');
+    Route::get('/kelolabs/popup/{id}', [BanksampahController::class, 'popup'])->name('admin.banksampah.popup');
+
 
 
     //DATA SAMPAH
@@ -49,6 +54,7 @@ use App\Http\Controllers\SampahController;
 
     //PETA
     Route::get('/pemetaan/map', [PetaController::class, 'map'])->name('admin.map');
+    Route::get('/pemetaan/grid', [PetaController::class, 'grid'])->name('admin.grid');
 
 
 // });

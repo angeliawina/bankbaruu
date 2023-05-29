@@ -11,6 +11,11 @@ use App\Http\Requests\BankSampahRequest;
 
 class BanksampahController extends Controller
 {
+    public function dashboard()
+    {
+        return view('pemetaan.map');
+    }
+
     public function indexBs()
     {
         $bank = Banksampah::all();
@@ -116,4 +121,19 @@ class BanksampahController extends Controller
         $bank = Banksampah::find($id);
         return view('kelolabs.detail_bs',compact('bank'));
     }
+
+    public function titik()
+    {
+        $bank = Banksampah::all();
+        return json_encode($bank);
+    }
+
+    public function popup($id='')
+    {
+        $bank = Banksampah::all();
+        return json_encode($bank);
+        
+    }
+
+    
 }

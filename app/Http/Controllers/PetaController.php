@@ -10,4 +10,9 @@ class PetaController extends Controller
     {
         return view('pemetaan.map');
     }
+
+    public function grid()
+    {
+        return view('pemetaan.gridcontent');
+    }
 }

@@ -21,9 +21,18 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css">
         <script src="https://unpkg.com/leaflet-geosearch@3.1.0/dist/geosearch.umd.js"></script>
 
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+        <!-- CSS Icon-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
         <style>
             #peta {
-                height: 600px;
+                height: 550px;
                 width: 100%;
             }
         </style>
@@ -31,31 +40,97 @@
 
     <body>
 
-        <div class="container">
-            <h1>Pemetaan Lokasi Banksampah di Kota Pontianak</h1>
+        <div class="container-fluid py-5" style="background-color: #e1e9e5;">
+            <div class="container">
+
+                <div class="col-12">
+                    <h2 class="text-center">Sistem Informasi Geografis Lokasi Bank Sampah Kota Pontianak</h2>
+                </div>
+            </div>
+
             <div class="row">
-                <div class="col">
-                    <div id="peta">
-                    </div>
+                <div class="col-9">
+                    <div id="peta"> </div>
                 </div>
 
-                <div class="col-sm-5">
-                    @csrf
-                    <div class="form-group">
-                        <label for="latitude">Latitude</label>
-                        <input class="form-control" name="latitude" id="latitude" cols="30" rows="10">
+                <div class="col-3 offset-0.5">
+
+
+
+                    <div class="container-fluid py-3" style="background-color: #41d1b9;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <i class="material-icons">home</i>
+                                    <h4>Data unit terdaftar</h4>
+                                    <p>Sistem Informasi Geografis Bank Sampah Kota Pontianak</p>
+                                    <a href="{{ route('admin.banksampah') }}" class="btn btn-primary btn-sm">Lihat Data</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="longitude">Longitude</label>
-                        <input class="form-control" name="longitude" id="longitude" cols="30" rows="10">
+
+                    <div class="row ">
+                        <div class="col">
+                            <h2></h2>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="longitude">Lokasi</label>
-                        <input class="form-control" name="lokasi" id="lokasi" cols="30" rows="10">
+
+                    <div class="container-fluid py-3" style="background-color: #41d1b9;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <i class="material-icons">location_on</i>
+                                    <h4>Data Kecamatan</h4>
+                                    <p>Sistem Informasi Geografis Bank Sampah Kota Pontianak</p>
+                                    <a href="{{ route('admin.datakecamatan') }}" class="btn btn-primary btn-sm">Lihat
+                                        Data</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="row ">
+                        <div class="col-sm-5">
+                            <h2></h2>
+                        </div>
+                    </div>
+
+
+
                 </div>
+
+                {{-- about us --}}
+                {{-- <div class="container-fluid py-5" style="background-color: #E8E8E8;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h4>Tentang Kami</h4>
+                                <p>Sistem Informasi Geografis Bank Sampah Kota Pontianak</p>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <img src="{{ asset('images/sigbs logo.png') }}" alt="logo" class="img-fluid" />
+                            </div>
+
+                            <div class="col-4 text-center offset-0.5">
+                                SIGBS atau Sistem Informasi Geografis Bank Sampah di Kota Pontianak
+                                merupakan sebuah website yang memberikan informasi tentang lokasi
+                                Bank Sampah yang ada di Kota Pontianak beserta data-data lainnya
+                            </div>
+
+                            <div class="col-2 offset-1">
+                                <button class="btn btn-primary">let's start</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+
 
             </div>
+        </div>
         </div>
 
         {{-- peta --}}
@@ -72,7 +147,7 @@
                     pseudoFullscreen: false // if true, fullscreen to page width and height
                 },
                 minZoom: 2
-            }).setView([-0.0300733, 109.3257109], 12);
+            }).setView([-0.025610106086020566, 109.34133018152254], 13);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
@@ -81,25 +156,96 @@
 
 
 
-            let theMarker = {};
 
-            leafletMap.on('click', function(e) {
-                let latitude = e.latlng.lat.toString().substring(0, 15);
-                let longitude = e.latlng.lng.toString().substring(0, 15);
-                document.getElementById("latitude").value = latitude;
-                document.getElementById("longitude").value = longitude;
-                document.getElementById("lokasi").value = latitude + "," + longitude;
+            $(document).ready(function() {
+                $.getJSON('kelolabs/titik', function(data) {
+                    $.each(data, function(dashboard) {
+                        L.marker([data[dashboard].latitude, data[dashboard].longitude]).addTo(
+                            leafletMap);
 
-                let popup = L.popup()
-                    .setLatLng([latitude, longitude])
-                // .setContent("Kordinat : " + latitude + " - " + longitude)
-                // .openOn(leafletMap);
+                        layer.on('click', (e) => {
+                            $.getJSON('kelolabs/titik' + feature.properties.id, function(
+                                detail) {
+                                $.each(detail, function(dashboard) {
+                                    var html = '<h5>Nama :' + detail[dashboard]
+                                        .nama + '</h5';
 
-                if (theMarker != undefined) {
-                    leafletMap.removeLayer(theMarker);
-                };
-                theMarker = L.marker([latitude, longitude]).addTo(leafletMap);
+                                    L.popup()
+                                        .setLatLng(layer.getBounds()
+                                            .getCenter())
+                                        .setContent(html)
+                                        .openOn(leafletMap);
+
+
+                                });
+                            });
+                        });
+                    });
+
+                });
+
             });
+
+
+
+
+
+
+
+
+            // .bindPopup('<b>Marker</b>')
+
+
+
+            // layer.on('click', (e) => {
+
+            //     $.getJSON('kelolabs/lokasi' + feature.properties.id, function(
+            //         detail) {
+            //         $.each(detail, function(dashboard) {
+            //             var
+
+
+
+            //             let popup = L.popup().setLatLng([latitude,
+            //                     longitude
+            //                 ])
+            //                 .setContent("Kordinat : " + latitude +
+            //                     " - " + longitude)
+            //                 .openOn(leafletMap);
+
+
+            //         });
+            //     })
+
+            // })
+
+
+            // let popup = L.popup()
+            //     .setContent("Kordinat : " + latitude + " - " + longitude)
+
+
+
+
+
+            // let theMarker = {};
+
+            // leafletMap.on('click', function(e) {
+            //     let latitude = e.latlng.lat.toString().substring(0, 15);
+            //     let longitude = e.latlng.lng.toString().substring(0, 15);
+            //     document.getElementById("latitude").value = latitude;
+            //     document.getElementById("longitude").value = longitude;
+            //     document.getElementById("lokasi").value = latitude + "," + longitude;
+
+            //     let popup = L.popup()
+            //         .setLatLng([latitude, longitude])
+            //     // .setContent("Kordinat : " + latitude + " - " + longitude)
+            //     // .openOn(leafletMap);
+
+            //     if (theMarker != undefined) {
+            //         leafletMap.removeLayer(theMarker);
+            //     };
+            //     theMarker = L.marker([latitude, longitude]).addTo(leafletMap);
+            // });
 
             const search = new GeoSearch.GeoSearchControl({
                 provider: providerOSM,
@@ -108,5 +254,6 @@
             });
             leafletMap.addControl(search);
         </script>
+
     </body>
 @endsection
