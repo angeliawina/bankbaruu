@@ -12,7 +12,7 @@
                     <!-- Card Body -->
                     {{-- <div class="card-body"> --}}
                     <h1 class="h3 mb-4 text-gray-800">Form Tambah Data Kecamatan</h1>
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.kelolakecamatan.tambah') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="from-group">
                             <label for="nama">Nama Kecamatan</label>
@@ -20,8 +20,8 @@
 
                         </div>
                         <div class="form-group">
-                            <label for="foto">Geojson Kecamatan</label>
-                            <input type="file" name="geojson" class="form-control">
+                            <label for="data">Geojson Kecamatan</label>
+                            <input type="file" name="data" class="form-control">
                         </div>
 
                         <input class="btn btn-primary"type="submit" value="Simpan">

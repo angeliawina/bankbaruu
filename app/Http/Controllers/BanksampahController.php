@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 use App\Models\Banksampah;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\BankSampahRequest;
-
+use App\Models\Kecamatan;
 
 class BanksampahController extends Controller
 {
     public function dashboard()
     {
-        return view('pemetaan.map');
+        $bank = Banksampah::all();
+        // $akhir = Banksampah::all()->last();
+        return view('pemetaan.map',compact('bank'));
     }
 
     public function indexBs()
@@ -24,7 +26,8 @@ class BanksampahController extends Controller
 
     public function formTambahBS()
     {
-        return view('kelolabs.form_tambah_bs');
+        $kecamatan = Kecamatan::all();
+        return view('kelolabs.form_tambah_bs', compact('kecamatan'));
     }
 
     /**
@@ -61,7 +64,7 @@ class BanksampahController extends Controller
                 'foto' => $path
             ],200);
 
-            //respon ggal
+            //respon gagal
         }catch(\Exception $e) {
             return response() -> json([
                 'message' => "something went really wrong"

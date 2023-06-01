@@ -47,6 +47,15 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="alamat">Kecamatan</label>
+                    <select name="kecamatan" class="form-control">
+                        @foreach ($kecamatan as $kec)
+                            <option value="{{ $kec->id }}">{{ $kec->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="foto">Foto Bank Sampah</label>
                     <input type="file" name="foto" class="form-control">
                 </div>

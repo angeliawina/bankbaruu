@@ -50,20 +50,18 @@
 
             <div class="row">
                 <div class="col-9">
-                    <div id="peta"> </div>
+                    <div id="peta">
+                    </div>
                 </div>
 
                 <div class="col-3 offset-0.5">
-
-
-
                     <div class="container-fluid py-3" style="background-color: #41d1b9;">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 text-center">
                                     <i class="material-icons">home</i>
                                     <h4>Data unit terdaftar</h4>
-                                    <p>Sistem Informasi Geografis Bank Sampah Kota Pontianak</p>
+                                    {{-- <h1> {{ $akhir->id }}</h1> --}}
                                     <a href="{{ route('admin.banksampah') }}" class="btn btn-primary btn-sm">Lihat Data</a>
                                 </div>
                             </div>
@@ -154,37 +152,60 @@
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(leafletMap);
 
+            @foreach ($bank as $bnk)
+
+                L.marker([{{ $bnk->latitude }}, {{ $bnk->longitude }}]).addTo(
+                    leafletMap).bindPopup(
+                    '<h5>{{ $bnk->nama }}</h5><br> <img src={{ asset('storage/' . $bnk->foto) }} width="150px" <br> Alamat : {{ $bnk->alamat }}', {
+                        maxWidth: '150'
+                    }
+                );
+            @endforeach
+
+            // $(document).ready(function() {
+            //     $.getJSON('kelolabs/titik', function(data) {
+            //         $.each(data, function(dashboard) {
+
+            //             L.marker([data[dashboard].latitude, data[dashboard].longitude]).addTo(
+            //                 leafletMap);
 
 
 
-            $(document).ready(function() {
-                $.getJSON('kelolabs/titik', function(data) {
-                    $.each(data, function(dashboard) {
-                        L.marker([data[dashboard].latitude, data[dashboard].longitude]).addTo(
-                            leafletMap);
-
-                        layer.on('click', (e) => {
-                            $.getJSON('kelolabs/titik' + feature.properties.id, function(
-                                detail) {
-                                $.each(detail, function(dashboard) {
-                                    var html = '<h5>Nama :' + detail[dashboard]
-                                        .nama + '</h5';
-
-                                    L.popup()
-                                        .setLatLng(layer.getBounds()
-                                            .getCenter())
-                                        .setContent(html)
-                                        .openOn(leafletMap);
+            // L.marker([data[dashboard].latitude, data[dashboard].longitude]).addTo(
+            // leafletMap);
 
 
-                                });
-                            });
-                        });
-                    });
 
-                });
+            // 
+            //     L.marker([$bnk - > lat, $bnk - > lng]).addTo(
+            //         leafletMap).bindPopup('Nama' = $bnk - > nama, 'Alamat' = $bnk -
+            //         >
+            //         alamat);
+            // }
 
-            });
+
+            // layer.on('click', (e) => {
+            //     $.getJSON('kelolabs/popup' + feature.properties.id, function(
+            //         detail) {
+            //         $.each(detail, function(dashboard) {
+            //             var html = '<h5>Nama :' + detail[dashboard]
+            //                 .nama + '</h5';
+
+            //             L.popup()
+            //                 .setLatLng(layer.getBounds()
+            //                     .getCenter())
+            //                 .setContent(html)
+            //                 .openOn(leafletMap);
+
+
+            //         });
+            //     });
+            // });
+            // });
+
+            // });
+
+            // });
 
 
 

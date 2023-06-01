@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kecamatans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('geojson');
+            $table->json('data');
             $table->timestamps();
         });
     }

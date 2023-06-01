@@ -50,7 +50,8 @@ use App\Http\Controllers\SampahController;
     //DATA KECAMATAN
     Route::get('/kelolakecamatan/index', [KecamatanController::class, 'index'])->name('admin.datakecamatan');
     Route::get('/kelolakecamatan/formtambah', [KecamatanController::class, 'formTambahKecamatan'])->name('admin.kelolakecamatan.formtambah');
-
+    Route::post('/kelolakecamatan/tambah', [KecamatanController::class, 'tambahKec'])->name('admin.kelolakecamatan.tambah');
+ 
 
     //PETA
     Route::get('/pemetaan/map', [PetaController::class, 'map'])->name('admin.map');

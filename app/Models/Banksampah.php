@@ -12,8 +12,10 @@ class Banksampah extends Model
     //protected $table = 'banksampahs';
 
     protected $fillable=[
+        'kecamatans_id',
         'nama',
         'alamat',
+        'kecamatan',
         'foto',
         'latitude',
         'longitude'
@@ -22,5 +24,10 @@ class Banksampah extends Model
     public function sampahs()
     {
         return $this->hasMany(Sampah::class, 'banksampahs_id', 'id');
+    }
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class);
     }
 }
