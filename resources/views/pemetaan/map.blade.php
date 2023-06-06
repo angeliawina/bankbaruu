@@ -98,33 +98,7 @@
 
                 </div>
 
-                {{-- about us --}}
-                {{-- <div class="container-fluid py-5" style="background-color: #E8E8E8;">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <h4>Tentang Kami</h4>
-                                <p>Sistem Informasi Geografis Bank Sampah Kota Pontianak</p>
-                            </div>
-                        </div>
 
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <img src="{{ asset('images/sigbs logo.png') }}" alt="logo" class="img-fluid" />
-                            </div>
-
-                            <div class="col-4 text-center offset-0.5">
-                                SIGBS atau Sistem Informasi Geografis Bank Sampah di Kota Pontianak
-                                merupakan sebuah website yang memberikan informasi tentang lokasi
-                                Bank Sampah yang ada di Kota Pontianak beserta data-data lainnya
-                            </div>
-
-                            <div class="col-2 offset-1">
-                                <button class="btn btn-primary">let's start</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
 
             </div>

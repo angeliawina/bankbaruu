@@ -1,6 +1,6 @@
 @extends('layouts.backend.main')
 
-
+@section('title', 'Form Tambah Banksampah')
 @section('content')
 
     <head>
@@ -23,7 +23,7 @@
 
         <style>
             #peta {
-                height: 600px;
+                height: 500px;
                 width: 100%;
             }
         </style>
@@ -31,78 +31,75 @@
 
     <body>
 
-        <div class="container">
-            <h1 class="h3 mb-4 text-gray-800">Form Tambah Unit Bank Sampah</h1>
-            <form action="{{ route('admin.banksampah.tambah') }}" method="post" enctype="multipart/form-data">
-
-                @csrf
-                <div class="from-group">
-                    <label for="nama">Nama Bank Sampah</label>
-                    <input class="form-control" type="text" name="nama" id="" cols="30" rows="10">
-                </div>
-
-                <div class="form-group">
-                    <label for="alamat">Alamat Bank Sampah</label>
-                    <input class="form-control" name="alamat" id="" cols="30" rows="10">
-                </div>
-
-                <div class="form-group">
-                    <label for="alamat">Kecamatan</label>
-                    <select name="kecamatan" class="form-control">
-                        @foreach ($kecamatan as $kec)
-                            <option value="{{ $kec->id }}">{{ $kec->nama }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="foto">Foto Bank Sampah</label>
-                    <input type="file" name="foto" class="form-control">
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-5">
-                        <label for="latitude">Latitude</label>
-                        <input class="form-control" type="text" name="latitude" id="latitude" cols="30"
-                            rows="10"{{-- disabled value="" --}}>
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Form Tambah Banksampah</h6>
                     </div>
-                    <div class="col-sm-5">
-                        <label for="longitude">Longitude</label>
-                        <input class="form-control" type="text" name="longitude" id="longitude" cols="30"
-                            rows="10"{{-- disabled value="" --}}>
+                    <div class="card-body">
+                        <form action="{{ route('admin.banksampah.tambah') }}" method="post" enctype="multipart/form-data">
+
+                            @csrf
+                            <div class="from-group">
+                                <label for="nama">Nama Bank Sampah</label>
+                                <input class="form-control" type="text" name="nama" id="" cols="30"
+                                    rows="10">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="alamat">Alamat Bank Sampah</label>
+                                <input class="form-control" name="alamat" id="" cols="30" rows="10">
+                            </div>
+
+                            {{-- <div class="form-group">
+                                <label for="alamat">Kecamatan</label>
+                                <select name="kecamatan" class="form-control">
+                                    @foreach ($kecamatan as $kec)
+                                        <option value="{{ $kec->id }}">{{ $kec->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="foto">Foto Bank Sampah</label>
+                                <input type="file" name="foto" class="form-control">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="latitude">Latitude</label>
+                                    <input class="form-control" type="text" name="latitude" id="latitude" cols="30"
+                                        rows="10"{{-- disabled value="" --}}>
+
+                                    <label for="longitude">Longitude</label>
+                                    <input class="form-control" type="text" name="longitude" id="longitude"
+                                        cols="30" rows="10"{{-- disabled value="" --}}>
+
+                                    <label for="longitude">Lokasi</label>
+                                    <input class="form-control" name="lokasi" id="lokasi" disabled value=""
+                                        cols="30" rows="10">
+
+                                    <div>
+                                        <p> </p>
+                                    </div>
+                                    <input class="btn btn-primary"type="submit" value="Simpan">
+                                    <a href="{{ route('admin.banksampah') }}" class="btn btn-primary">Batal</a>
+
+                                </div>
+
+                                <div class="col">
+                                    <div id="peta">
+                                    </div>
+                                </div>
+                                {{-- <div class="container" id="peta"></div> --}}
+                            </div>
+
                     </div>
                 </div>
-
-                {{-- <div class="row">
-                    <div class="col-sm-5">
-                        <div class="form-group">
-                            <label for="latitude">Latitude</label>
-                            <input class="form-control" name="latitude" id="latitude" cols="30" rows="10">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="longitude">Longitude</label>
-                            <input class="form-control" name="longitude" id="longitude" cols="30" rows="10">
-                        </div> --}}
-
-                <div class="form-group">
-                    <label for="longitude">Lokasi</label>
-                    <input class="form-control" name="lokasi" id="lokasi" disabled value="" cols="30"
-                        rows="10">
-                </div>
-
-                <input class="btn btn-primary"type="submit" value="Simpan">
-                <a href="{{ route('admin.banksampah') }}" class="btn btn-primary">Batal</a>
+            </div>
         </div>
 
-        <div class="container" id="peta"></div>
-
-        {{-- <div class="col">
-            <div id="peta">
-            </div> --}}
-        </div>
-        </div>
-        </div>
 
         {{-- peta --}}
         <script>
@@ -118,7 +115,7 @@
                     pseudoFullscreen: false // if true, fullscreen to page width and height
                 },
                 minZoom: 2
-            }).setView([-0.0300733, 109.3257109], 12);
+            }).setView([-0.0300733, 109.3257109], 13);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,

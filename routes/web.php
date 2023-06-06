@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BanksampahController;
+use App\Http\Controllers\SigbsController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\PetaController;
 use App\Http\Controllers\SampahController;
@@ -51,11 +52,17 @@ use App\Http\Controllers\SampahController;
     Route::get('/kelolakecamatan/index', [KecamatanController::class, 'index'])->name('admin.datakecamatan');
     Route::get('/kelolakecamatan/formtambah', [KecamatanController::class, 'formTambahKecamatan'])->name('admin.kelolakecamatan.formtambah');
     Route::post('/kelolakecamatan/tambah', [KecamatanController::class, 'tambahKec'])->name('admin.kelolakecamatan.tambah');
+    Route::get('/kelolakecamatan/detail/{id}', [KecamatanController::class, 'detailKec'])->name('admin.kelolakecamatan.detail');
+ 
  
 
     //PETA
     Route::get('/pemetaan/map', [PetaController::class, 'map'])->name('admin.map');
     Route::get('/pemetaan/grid', [PetaController::class, 'grid'])->name('admin.grid');
+
+    //SIGBS
+    Route::get('/sigbs/dashboard', [SigbsController::class, 'index'])->name('sigbs.index');
+    Route::get('/sigbs/banksampah', [SigbsController::class, 'dataBS'])->name('sigbs.dataBS');
 
 
 // });

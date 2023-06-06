@@ -1,4 +1,4 @@
-@extends('layouts.backend2.main')
+@extends('layouts.frontend.main')
 
 @section('content')
     <div class="container-fluid">
@@ -13,7 +13,7 @@
 
                     <!-- Card Body -->
                     {{-- <a href="{{ route('admin.banksampah.formtambah') }}" class="btn btn-primary">+ Tambah Unit Bank Sampah</a> --}}
-                    <ul>
+                    {{-- <ul>
                         <div class="table-responsive">
                             <table class="table table-striped table-sm">
                                 <thead>
@@ -39,14 +39,14 @@
                                             {{-- <td><a
                                                     href="{{ route('admin.banksampah.hapus', ['id' => $banks->id]) }}">Hapus</a>
                                             </td> --}}
-                                {{-- </tr>
+                    {{-- </tr>
                                     @endforeach
                                 </tbody> --}}
-                            </table>
-                        </div>
-                    </ul>
+                    </table>
                 </div>
+                {{-- </ul>  --}}
             </div>
         </div>
+    </div>
     </div>
 @endsection

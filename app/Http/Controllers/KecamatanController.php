@@ -64,4 +64,10 @@ class KecamatanController extends Controller
             dd($data);
     }
 
+    public function detailKec($id)
+    {
+        $kecamatan = Kecamatan::find($id);
+        return view('kelolakecamatan.detail_kec', compact('kecamatan'));
+    }
+
 }
