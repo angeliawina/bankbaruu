@@ -1,6 +1,6 @@
 @extends('layouts.backend.main')
 
-@section('title', 'Dashboard')
+
 @section('content')
 
     <head>
@@ -39,91 +39,71 @@
     </head>
 
     <body>
-        <div class="row">
-            <!-- Data Kecamatan -->
-            <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                    <div class="card-body">
 
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                    Data Kecamatan
+        <div class="container-fluid py-5" style="background-color: #e1e9e5;">
+            <div class="container">
+
+                <div class="col-12">
+                    <h2 class="text-center">Sistem Informasi Geografis Lokasi Bank Sampah Kota Pontianak</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-9">
+                    <div id="peta">
+                    </div>
+                </div>
+
+                <div class="col-3 offset-0.5">
+                    <div class="container-fluid py-3" style="background-color: #41d1b9;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <i class="material-icons">home</i>
+                                    <h4>Data unit terdaftar</h4>
+                                    {{-- <h1> {{ $akhir->id }}</h1> --}}
+                                    <a href="{{ route('admin.banksampah') }}" class="btn btn-primary btn-sm">Lihat Data</a>
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">7 Kecamatan</div>
-                                {{-- <h1> {{ $akhir->id }}</h1> --}}
-                            </div>
-                            <div class="col-auto">
-                                <a href="{{ route('admin.datakecamatan') }}" class="d-none d-sm-inline-block">
-                                    <i class="fas fa-map fa-2x text-gray-300"></i></a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Data Banksampah -->
-            <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Data Unit Terdaftar </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">20 Unit</div>
-                                {{-- <h1> {{ $akhir->id }}</h1> --}}
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Data Sampah</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">50 Data</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-trash fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Peta --}}
-
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-secondary">Pemetaan</h6>
-            </div>
-
-            <div class="card-body">
-                <div class="container-fluid py-5">
-                    <div class="row">
+                    <div class="row ">
                         <div class="col">
-                            <div id="peta">
+                            <h2></h2>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid py-3" style="background-color: #41d1b9;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <i class="material-icons">location_on</i>
+                                    <h4>Data Kecamatan</h4>
+                                    <p>Sistem Informasi Geografis Bank Sampah Kota Pontianak</p>
+                                    <a href="{{ route('admin.datakecamatan') }}" class="btn btn-primary btn-sm">Lihat
+                                        Data</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row ">
+                        <div class="col-sm-5">
+                            <h2></h2>
+                        </div>
+                    </div>
+
+
+
                 </div>
+
+
+
+
             </div>
-
         </div>
         </div>
-        </div>
-
-
-
 
         {{-- peta --}}
         <script>
@@ -269,11 +249,6 @@
             });
             leafletMap.addControl(search);
         </script>
+
     </body>
-
-
-
-
-
-
 @endsection
