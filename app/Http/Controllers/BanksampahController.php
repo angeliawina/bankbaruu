@@ -14,8 +14,9 @@ class BanksampahController extends Controller
     public function dashboard()
     {
         $bank = Banksampah::all();
+        $kecamatan = Kecamatan::all();
         // $akhir = Banksampah::all()->last();
-        return view('pemetaan.map', compact('bank'));
+        return view('pemetaan.map', compact('bank', 'kecamatan'));
     }
 
     public function indexBs()
