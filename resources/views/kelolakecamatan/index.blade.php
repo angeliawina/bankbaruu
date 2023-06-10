@@ -29,7 +29,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nama Kecamatan</th>
-                            <th>Data</th>
+                            <th>Daftar Banksampah</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -38,7 +38,12 @@
                             <tr>
                                 <td>{{ $kec->id }}</td>
                                 <td>{{ $kec->nama }}</td>
-                                <td>{{ $kec->data }}</td>
+                                {{-- <td>{{ $kec->data }}</td> --}}
+                                <td>
+                                    <div class="card" style="width: 10rem; heigh: 10rem; margin:10px">
+                                        <data class="card-img-top" style="-o-object-fit: cover; width:10rem; height:10rem"
+                                            src="{{ asset('storage/' . $kec->data) }}" alt="Card-image cap">
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.kelolakecamatan.detail', ['id' => $kec->id]) }}"
                                         class="btn btn-info">Detail</a>

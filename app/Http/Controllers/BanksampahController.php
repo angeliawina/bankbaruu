@@ -50,6 +50,7 @@ class BanksampahController extends Controller
             'foto'=>$imageName,
             'latitude'=>$request->latitude,
             'longitude'=>$request->longitude,
+            'kecamatans_id'=>$request->id,
             ]);
 
             //folder foto
@@ -124,6 +125,8 @@ class BanksampahController extends Controller
         $bank = Banksampah::find($id);
         return view('kelolabs.detail_bs',compact('bank'));
     }
+
+    
 
     public function titik()
     {
