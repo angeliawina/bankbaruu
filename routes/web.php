@@ -30,7 +30,7 @@ use App\Http\Controllers\SampahController;
     Route::post('/kelolabs/tambah', [BanksampahController::class, 'tambahBS'])->name('admin.banksampah.tambah');
     Route::post('/kelolabs/ubah/{id}', [BanksampahController::class, 'ubahBS'])->name('admin.banksampah.ubah');
     Route::get('/kelolabs/detail/{id}', [BanksampahController::class, 'detailBS'])->name('admin.banksampah.detail');
-
+    Route::get('/kelolabs/hapus/{id}', [BanksampahController::class, 'hapusBS'])->name('admin.banksampah.hapus');
     Route::get('/kelolabs/titik', [BanksampahController::class, 'titik'])->name('admin.banksampah.titik');
     Route::get('/kelolabs/popup/{id}', [BanksampahController::class, 'popup'])->name('admin.banksampah.popup');
 
@@ -46,6 +46,7 @@ use App\Http\Controllers\SampahController;
     Route::get('/kelolasampah/detail/{banksampah_id}/sampah/{id}', [SampahController::class, 'detailSampah'])->name('admin.kelolasampah.detail');
     Route::post('/kelolasampah/ubah/{banksampah_id}/sampah/{id}', [SampahController::class, 'ubahSampah'])->name('admin.kelolasampah.ubah');
     // Route::get(user/{id}/{nama})
+    Route::get('/kelolasampah/hapus/{id}', [SampahController::class, 'hapusSampah'])->name('admin.kelolasampah.hapus');
 
 
     //DATA KECAMATAN
@@ -53,8 +54,9 @@ use App\Http\Controllers\SampahController;
     Route::get('/kelolakecamatan/formtambah', [KecamatanController::class, 'formTambahKecamatan'])->name('admin.kelolakecamatan.formtambah');
     Route::post('/kelolakecamatan/tambah', [KecamatanController::class, 'tambahKec'])->name('admin.kelolakecamatan.tambah');
     Route::get('/kelolakecamatan/detail/{id}', [KecamatanController::class, 'detailKec'])->name('admin.kelolakecamatan.detail');
- 
- 
+    Route::get('/kelolakecamatan/formubahkecamatan/{id}', [KecamatanController::class, 'formUbahKec'])->name('admin.kelolakecamatan.formubahkecamatan');
+    Route::post('/kelolakecamatan/ubah/{id}', [KecamatanController::class, 'ubahKec'])->name('admin.kelolakecamatan.ubah');
+    Route::get('/kelolakecamatan/hapus/{id}', [KecamatanController::class, 'hapusKec'])->name('admin.kelolakecamatan.hapus');
 
     //PETA
     Route::get('/pemetaan/map', [PetaController::class, 'map'])->name('admin.map');

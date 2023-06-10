@@ -15,7 +15,7 @@ class BanksampahController extends Controller
     {
         $bank = Banksampah::all();
         // $akhir = Banksampah::all()->last();
-        return view('pemetaan.map',compact('bank'));
+        return view('pemetaan.map', compact('bank'));
     }
 
     public function indexBs()
@@ -39,94 +39,95 @@ class BanksampahController extends Controller
 
     public function tambahBS(Request $request)
     {
-        try{
-            $imageName = Str::random(32).".".$request->foto->getClientOriginalExtension();
+        try {
+            $imageName = Str::random(32) . "." . $request->foto->getClientOriginalExtension();
 
 
             //buat bank sampah
             Banksampah::create([
-            'nama'=>$request->nama,
-            'alamat'=>$request->alamat,
-            'foto'=>$imageName,
-            'latitude'=>$request->latitude,
-            'longitude'=>$request->longitude,
-            'kecamatans_id'=>$request->id,
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'foto' => $imageName,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'kecamatans_id' => $request->id,
             ]);
 
             //folder foto
-            Storage::disk('public') -> put($imageName, file_get_contents($request->foto));
+            Storage::disk('public')->put($imageName, file_get_contents($request->foto));
             $url = Storage::url("/storage/app/{$imageName}");
             $path = public_path($url);
-            return redirect()->route('admin.banksampah')->with('message','Berhasil Menambahkan!');
-            
+            return redirect()->route('admin.banksampah')->with('message', 'Berhasil Menambahkan!');
+
             //respon
-              return response() -> json([
+            return response()->json([
                 'message' => "Berhasil Menambahkan",
                 'foto' => $path
-            ],200);
+            ], 200);
 
             //respon gagal
-        }catch(\Exception $e) {
-            return response() -> json([
+        } catch (\Exception $e) {
+            return response()->json([
                 'message' => "something went really wrong"
-            ],500);
+            ], 500);
         }
     }
 
     public function formUbahBS($id)
     {
         $bank = Banksampah::find($id);
-        return view('kelolabs.form_ubah_bs',compact('bank'));
+        return view('kelolabs.form_ubah_bs', compact('bank'));
     }
 
     public function ubahBS(Request $request, $id)
     {
-        try{
+        try {
             $bank = Banksampah::find($id);
-        if(!$bank){
+            if (!$bank) {
+                return response()->json([
+                    'message' => 'Data tidak ditemukan'
+                ], 404);
+            }
+
+            $bank->nama = $request->nama;
+            $bank->alamat = $request->alamat;
+            $bank->latitude = $request->latitude;
+            $bank->longitude = $request->longitude;
+
+            if ($request->foto) {
+                $storage = Storage::disk('public');
+
+                //hapus foto lama
+                if ($storage->exists($bank->foto))
+                    $storage->delete($bank->foto);
+
+                //nama foto
+                $imageName = Str::random(32) . "." . $request->foto->getClientOriginalExtension();
+                $bank->foto = $imageName;
+
+                //save foto
+                $storage->put($imageName, file_get_contents($request->foto));
+            }
+
+            //update foto
+            $bank->save();
+
+            //respon
+            return redirect()->route('admin.banksampah.detail', ['id' => $bank->id])->with('message', 'Berhasil Mengupdate!');
+        } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Data tidak ditemukan'
-            ],404);
+                'message' => "Something went really wrong"
+            ]);
         }
-
-    $bank->nama = $request->nama;
-    $bank->alamat = $request->alamat;
-    $bank->latitude =$request->latitude;
-    $bank->longitude = $request->longitude;
-
-    if($request->foto){
-        $storage = Storage::disk('public');
-
-        //hapus foto lama
-        if ($storage->exists($bank->foto))
-        $storage->delete($bank->foto);
-
-        //nama foto
-        $imageName = Str::random(32).".".$request->foto->getClientOriginalExtension();
-        $bank->foto = $imageName;
-
-        //save foto
-        $storage->put($imageName, file_get_contents($request->foto));
     }
-
-    //update foto
-    $bank->save();
-
-    //respon
-    return redirect()->route('admin.banksampah.detail',['id'=>$bank->id])->with('message','Berhasil Mengupdate!');
-        }catch(\Exception $e){
-    return response()->json([
-        'message' => "Something went really wrong"
-    ]);
-}}
 
     public function detailBS($id)
     {
         $bank = Banksampah::find($id);
-        return view('kelolabs.detail_bs',compact('bank'));
+        return view('kelolabs.detail_bs', compact('bank'));
     }
 
-    
+
 
     public function titik()
     {
@@ -134,12 +135,24 @@ class BanksampahController extends Controller
         return json_encode($bank);
     }
 
-    public function popup($id='')
+    public function popup($id = '')
     {
         $bank = Banksampah::all();
         return json_encode($bank);
-        
     }
 
-    
+    public function hapusBS($id)
+    {
+        $bank = Banksampah::find($id);
+        if (!$bank) {
+            return response()->json([
+                'message' => 'Bank Sampah tidak ditemukan'
+            ], 404);
+        }
+        $url = Storage::disk('public');
+        if ($url->exists($bank->foto));
+        $bank->delete($bank->foto);
+        $bank->delete();
+        return redirect()->route('admin.banksampah')->with('message', 'Berhasil Menghapus!');;
+    }
 }

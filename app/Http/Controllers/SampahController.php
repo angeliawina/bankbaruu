@@ -123,6 +123,22 @@ $imageName = Str::random(32).".".$request->foto->getClientOriginalExtension();
         $sampah = $bank->sampahs()->where('id', $id)->first();
         return view('kelolasampah.detail_sampah',compact('bank','sampah'));
     }    
+    public function hapusSampah($id,)
+    {
+        // $bank = Banksampah::where('id', $banksampah_id)->first();
+        // $sampah = $bank->sampahs()->where('id', $id)->first();
+        $sampah = Sampah::find($id);
+        if (!$sampah) {
+            return response()->json([
+                'message' => 'Bank Sampah tidak ditemukan'
+            ], 404);
+        }
+        $url = Storage::disk('public');
+        if ($url->exists($sampah->foto));
+        $sampah->delete($sampah->foto);
+        $sampah->delete();
+        return redirect()->route('admin.datasampah')->with('message', 'Berhasil Menghapus!');;
+    }
             
 }
     

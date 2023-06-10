@@ -47,8 +47,8 @@
                                 <td>
                                     <a href="{{ route('admin.kelolakecamatan.detail', ['id' => $kec->id]) }}"
                                         class="btn btn-info">Detail</a>
-                                    <a href="{{ route('admin.datakecamatan') }}" class="btn btn-warning">Edit</a>
-                                    <a href="{{ route('admin.datakecamatan') }}" class="btn btn-danger">Hapus</a>
+                                    <a href="{{ route('admin.kelolakecamatan.formubahkecamatan',['id' => $kec->id]) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('admin.kelolakecamatan.hapus',['id'=>$kec->id]) }}" class="btn btn-danger">Hapus</a>
                                 </td>
                                 {{-- <td><a
                                                         href="{{ route('admin.banksampah.hapus', ['id' => $kec->id]) }}">Hapus</a>

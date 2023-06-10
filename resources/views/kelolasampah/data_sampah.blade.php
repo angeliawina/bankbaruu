@@ -58,7 +58,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('admin.kelolasampah.detail', ['banksampah_id' => $sph->banksampahs_id, 'id' => $sph->id]) }}"
+                                    <a href="{{ route('admin.kelolasampah.hapus', ['banksampah_id' => $sph->banksampahs_id, 'id' => $sph->id]) }}"
                                         class="btn btn-danger">Hapus</a>
                                 </td>
 

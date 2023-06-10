@@ -52,7 +52,7 @@
                                         class="btn btn-info">Detail</a>
                                     <a href="{{ route('admin.banksampah.formubah', ['id' => $banks->id]) }}"
                                         class="btn btn-warning">Ubah</a>
-                                    <a href="{{ route('admin.banksampah') }}" class="btn btn-danger">Hapus</a>
+                                    <a href="{{ route('admin.banksampah.hapus', ['id' => $banks->id]) }}" class="btn btn-danger">Hapus</a>
                                 </td>
 
                                 {{-- <td><a
