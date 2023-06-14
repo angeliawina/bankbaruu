@@ -14,4 +14,11 @@ class SigbsController extends Controller
         $kecamatan = Kecamatan::all();
         return view('sigbs.index', compact('bank','kecamatan'));
     }
+
+    function dataBS($id)
+    {
+        $bank = Banksampah::find($id);
+        $kecamatan = Kecamatan::find($id);
+        return view('sigbs.detail_bs', compact('bank','kecamatan'));
+    }
 }

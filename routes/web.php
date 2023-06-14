@@ -64,7 +64,8 @@ use App\Http\Controllers\SampahController;
 
     //SIGBS
     Route::get('/sigbs/dashboard', [SigbsController::class, 'index'])->name('sigbs.index');
-    Route::get('/sigbs/banksampah', [SigbsController::class, 'dataBS'])->name('sigbs.dataBS');
+    Route::get('/sigbs/banksampah/{id}', [SigbsController::class, 'dataBS'])->name('sigbs.dataBS');
+    
 
 
 // });
