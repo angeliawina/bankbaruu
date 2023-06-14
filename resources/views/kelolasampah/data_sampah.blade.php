@@ -9,7 +9,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">List Sampah</h6>
+            <h6 class="m-0 font-weight-bold text-primary"> {{ $bank->nama }} </h6>
 
             <div class="row">
                 <div class="col offset-9">

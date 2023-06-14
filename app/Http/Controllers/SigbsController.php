@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banksampah;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class SigbsController extends Controller
@@ -10,6 +11,7 @@ class SigbsController extends Controller
     public function index()
     {
         $bank = Banksampah::all();
-        return view('sigbs.index', compact('bank'));
+        $kecamatan = Kecamatan::all();
+        return view('sigbs.index', compact('bank','kecamatan'));
     }
 }

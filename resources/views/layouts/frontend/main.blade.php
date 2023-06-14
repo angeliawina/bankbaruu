@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.frontend.sidebar')
+        {{-- @include('layouts.frontend.sidebar') --}}
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
