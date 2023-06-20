@@ -38,7 +38,7 @@
                                 </div>
 
 
-                                <input class="btn btn-primary"type="submit" value="Ubah">
+                                <input class="btn btn-primary"type="submit" value="Simpan">
                                 <a href="{{ route('admin.kelolasampah.datasampah', ['id' => $bank->id]) }}"
                                     class="btn btn-primary">Batal</a>
                             </form>

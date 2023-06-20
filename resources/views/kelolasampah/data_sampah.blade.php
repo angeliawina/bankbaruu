@@ -54,7 +54,7 @@
 
                                 <td>
                                     <a href="{{ route('admin.kelolasampah.formubah', ['banksampah_id' => $sph->banksampahs_id, 'id' => $sph->id]) }}"
-                                        class="btn btn-warning">Ubah</a>
+                                        class="btn btn-warning">Edit</a>
                                 </td>
 
                                 <td>

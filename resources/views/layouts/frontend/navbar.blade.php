@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#jumbotron">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('sigbs.index') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#pemetaan">Pemetaan</a>

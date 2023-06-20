@@ -60,14 +60,14 @@
                         <input class="form-control" type="text" name="latitude" id="latitude"
                             value="{{ $bank->latitude }}">
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5 mb-3">
                         <label for="longitude">Longitude</label>
                         <input class="form-control" type="text" name="longitude" id="longitude"
                             value="{{ $bank->longitude }}">
                     </div>
                 </div>
 
-                <input class="btn btn-primary"type="submit" value="Ubah">
+                <input class="btn btn-primary"type="submit" value="Simpan">
                 <a href="{{ route('admin.banksampah') }}" class="btn btn-primary">Batal</a>
         </div>
 
