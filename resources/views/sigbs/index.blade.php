@@ -1005,7 +1005,7 @@
                     @foreach ($bank as $banks)
                         <div class="col-md-4 mb-3">
                             <div class="card">
-                                <a href="{{ route('sigbs.dataBS', ['id' => $banks->id]) }}">
+                                <a href="{{ route('sigbs.dataBS', ['id' => $banks->id, 'kecamatan_id'=> $banks->kecamatans_id]) }}">
                                     <img class="card-img-top" style="-o-object-fit: cover; width:20rem; height:20rem"
                                         src="{{ asset('storage/' . $banks->foto) }}" alt="banksampah"></a>
 
