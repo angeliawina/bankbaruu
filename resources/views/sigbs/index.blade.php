@@ -922,7 +922,11 @@
                                 color: 'blue'
                             };
                         }
-                    }).addTo(leafletMap);
+                    }).addTo(leafletMap).bindPopup(
+                        '<h3>{{ "Pontianak Timur" }}</h3>', {
+                            maxWidth: '150'
+                        }
+                    );;
                 }
 
                 function showbarat() {
@@ -933,8 +937,13 @@
                             };
                         }
 
-                    }).addTo(leafletMap);
-                }
+                    }).addTo(leafletMap).bindPopup(
+                        '<h3>{{ "Pontianak Barat" }}</h3>', {
+                            maxWidth: '150'
+                        }
+                    );;
+                };
+                
 
                 function showutara() {
                     L.geoJSON(utara, {
@@ -944,8 +953,13 @@
                             };
                         }
 
-                    }).addTo(leafletMap);
-                }
+                    }).addTo(leafletMap).bindPopup(
+                        '<h3>{{ "Pontianak Utara" }}</h3>', {
+                            maxWidth: '150'
+                        }
+                    );;
+                };
+                
 
                 function showtenggara() {
                     L.geoJSON(tenggara, {
@@ -955,8 +969,13 @@
                             };
                         }
 
-                    }).addTo(leafletMap);
-                }
+                    }).addTo(leafletMap).bindPopup(
+                        '<h3>{{ "Pontianak Tenggara" }}</h3>', {
+                            maxWidth: '150'
+                        }
+                    );;
+                };
+                
 
                 function showselatan() {
                     L.geoJSON(selatan, {
@@ -966,8 +985,13 @@
                             };
                         }
 
-                    }).addTo(leafletMap);
-                }
+                    }).addTo(leafletMap).bindPopup(
+                        '<h3>{{ "Pontianak Selatan" }}</h3>', {
+                            maxWidth: '150'
+                        }
+                    );;
+                };
+                
 
                 function showkota() {
                     L.geoJSON(kota, {
@@ -977,8 +1001,13 @@
                             };
                         }
 
-                    }).addTo(leafletMap);
-                }
+                    }).addTo(leafletMap).bindPopup(
+                        '<h3>{{ "Pontianak Kota" }}</h3>', {
+                            maxWidth: '150'
+                        }
+                    );;
+                };
+                
             </script>
 
 
